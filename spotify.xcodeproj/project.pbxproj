@@ -31,6 +31,7 @@
 		B48946322A5C1B490010435C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48946312A5C1B490010435C /* UserProfile.swift */; };
 		B48946342A5C3B0F0010435C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48946332A5C3B0F0010435C /* Extensions.swift */; };
 		B48946362A5D6C6D0010435C /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48946352A5D6C6D0010435C /* AuthResponse.swift */; };
+		B48946382A5DF9AA0010435C /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48946372A5DF9AA0010435C /* SettingsModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		B48946312A5C1B490010435C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		B48946332A5C3B0F0010435C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B48946352A5D6C6D0010435C /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		B48946372A5DF9AA0010435C /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				B489462F2A5C1B3E0010435C /* Artist.swift */,
 				B48946312A5C1B490010435C /* UserProfile.swift */,
 				B48946352A5D6C6D0010435C /* AuthResponse.swift */,
+				B48946372A5DF9AA0010435C /* SettingsModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				B48946342A5C3B0F0010435C /* Extensions.swift in Sources */,
 				B48945F52A5C15AF0010435C /* AppDelegate.swift in Sources */,
 				B48946302A5C1B3E0010435C /* Artist.swift in Sources */,
+				B48946382A5DF9AA0010435C /* SettingsModels.swift in Sources */,
 				B48946142A5C19B20010435C /* LibraryViewController.swift in Sources */,
 				B48946222A5C1A540010435C /* PlaylistViewController.swift in Sources */,
 				B48945F72A5C15AF0010435C /* SceneDelegate.swift in Sources */,
