@@ -1,13 +1,5 @@
 import Foundation
 
-struct NewReleasesResponse: Codable {
-    let albums: AlbumsResponse
-}
-
-struct AlbumsResponse: Codable {
-    let items: [Album]
-}
-
 struct Album: Codable {
     let album_type: String
     let total_tracks: Int

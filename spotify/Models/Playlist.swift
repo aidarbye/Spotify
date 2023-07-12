@@ -8,9 +8,3 @@ struct Playlist: Codable {
     let name: String
     let owner: User
 }
-
-struct User: Codable {
-    let display_name: String
-    let external_urls: [String:String]
-    let id: String
-}
