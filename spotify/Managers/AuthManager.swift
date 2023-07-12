@@ -2,7 +2,9 @@ import Foundation
 
 final class AuthManager {
     static let shared = AuthManager()
-    private var refreshingToken = false
+    
+    private init() {}
+    
     struct Constants {
         static let clientID = "db0a59aae69a416f96035e37d90dbab4"
         static let clientSecret = "041ad1045805445f8eedf94ebbea68bd"
@@ -11,7 +13,9 @@ final class AuthManager {
         static let scopes = "user-read-private%20playlist-modify-public%20playlist-read-private%20playlist-modify-private%20user-follow-read%20user-library-modify%20user-library-read%20user-read-email"
     }
     
-    private init() {}
+    private var refreshingToken = false
+    
+    private var onRefreshBlocks = [((String)->Void)]()
     
     public var signInURL: URL? {
         let base = "https://accounts.spotify.com/authorize"
@@ -86,8 +90,6 @@ final class AuthManager {
         }
         task.resume()
     }
-    
-    private var onRefreshBlocks = [((String)->Void)]()
     
     /// Supplies valid token to be used with API calls
     public func withValidToken(completion: @escaping (String)->Void) {

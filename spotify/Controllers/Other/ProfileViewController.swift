@@ -22,6 +22,11 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
         fetchProfile()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+    
     private func fetchProfile() {
         APICaller.shared.getCurrentUserProfile { [weak self] result in
             DispatchQueue.main.async { [weak self] in
@@ -71,11 +76,6 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
         imageView.layer.cornerRadius = imageSize/2
         
         tableView.tableHeaderView = headerView
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
     }
     
     //MARK: Tableview

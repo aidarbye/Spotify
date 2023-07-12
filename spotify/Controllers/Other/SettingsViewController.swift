@@ -20,6 +20,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+    
     private func configurationModels() {
         sections.append(
             Section(title: "Profile", options: [Option(title: "View your profile", handler: { [weak self] in
@@ -43,10 +48,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func signOutTapped() {
         
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
     }
     
     //MARK: TableView

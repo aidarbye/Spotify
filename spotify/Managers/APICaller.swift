@@ -14,6 +14,11 @@ final class APICaller {
         case failedToGetData
     }
     
+    enum HTTPMethod:String {
+        case GET
+        case POST
+    }
+    
     public func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
         createRequest(with: URL(string: Constants.baseAPIURL + "/me"), type: .GET) { baseRequest in
             let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
@@ -31,11 +36,6 @@ final class APICaller {
             }
             task.resume()
         }
-    }
-    
-    enum HTTPMethod:String {
-        case GET
-        case POST
     }
     
     private func createRequest(
