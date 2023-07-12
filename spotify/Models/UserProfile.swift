@@ -8,11 +8,7 @@ struct UserProfile: Codable {
     let external_urls: [String:String]
 //    let followers: [String: Codable?]
     let id: String
-    let images: [userImage]
+    let images: [APIImage]
     let product: String
-}
-
-struct userImage: Codable {
-    let url: String
 }
 

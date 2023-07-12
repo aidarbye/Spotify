@@ -5,7 +5,7 @@ class ProfileViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.isHidden = true
+        tableView.isHidden = true // <= if error, otherwise will change to false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return tableView
     }()
