@@ -1,5 +1,5 @@
 import Foundation
 
-struct APIImage: Codable {
+struct ImageObject: Codable {
     let url: String
 }

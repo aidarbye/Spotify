@@ -5,7 +5,7 @@ struct Album: Codable {
     let total_tracks: Int
     let available_markets: [String]
     let id: String
-    let images: [APIImage]
+    let images: [ImageObject]
     let name: String
     let release_date: String
     let artists: [Artist]
