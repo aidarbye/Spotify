@@ -40,7 +40,7 @@ final class APICaller {
     
     public func getNewReleases(completion: @escaping (Result<NewReleasesResponse,Error>)->Void) {
         createRequest(
-            with: URL(string:Constants.baseAPIURL + "/browse/new-releases?limit=50"),
+            with: URL(string:Constants.baseAPIURL + "/browse/new-releases?limit=20"),
             type: .GET
         ) { request in
             let task = URLSession.shared.dataTask(with: request) { data, _, error in
@@ -50,7 +50,6 @@ final class APICaller {
                 }
                 do {
                     let result = try JSONDecoder().decode(NewReleasesResponse.self, from: data)
-                    print(result)
                     completion(.success(result))
                     
                 } catch {
@@ -64,7 +63,7 @@ final class APICaller {
     
     public func getFeaturedPlaylists(completion: @escaping (Result<FeaturedPlaylistResponse,Error>) -> Void ) {
         createRequest(
-            with: URL(string:Constants.baseAPIURL + "/browse/featured-playlists"),
+            with: URL(string:Constants.baseAPIURL + "/browse/featured-playlists?limit=20"),
             type: .GET
         ) { request in
             let task = URLSession.shared.dataTask(with: request) { data, _, error in
@@ -74,7 +73,6 @@ final class APICaller {
                 }
                 do {
                     let result = try JSONDecoder().decode(FeaturedPlaylistResponse.self, from: data)
-                    print(result)
                     completion(.success(result))
                     
                 } catch {
@@ -99,7 +97,6 @@ final class APICaller {
                 }
                 do {
                     let result = try JSONDecoder().decode(RecommendationsTracksResponse.self, from: data)
-                    print(result)
                     completion(.success(result))
 
                 } catch {
@@ -122,7 +119,6 @@ final class APICaller {
                 }
                 do {
                     let result = try JSONDecoder().decode(RecommendedGenresResponse.self, from: data)
-                    print(result)
                     completion(.success(result))
                     
                 } catch {

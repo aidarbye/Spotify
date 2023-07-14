@@ -12,6 +12,8 @@
 		B47471812A6122D20071B1D0 /* FeaturedPlaylistsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471802A6122D20071B1D0 /* FeaturedPlaylistsCollectionViewCell.swift */; };
 		B47471832A6122DD0071B1D0 /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471822A6122DD0071B1D0 /* RecommendedTrackCollectionViewCell.swift */; };
 		B47471852A6128B20071B1D0 /* NewReleasesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471842A6128B20071B1D0 /* NewReleasesCellViewModel.swift */; };
+		B47471892A61C7E90071B1D0 /* FeaturedPlaylistsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471882A61C7E90071B1D0 /* FeaturedPlaylistsCellViewModel.swift */; };
+		B474718B2A61C8100071B1D0 /* RecommendedTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B474718A2A61C8100071B1D0 /* RecommendedTrackCellViewModel.swift */; };
 		B48945F52A5C15AF0010435C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F42A5C15AF0010435C /* AppDelegate.swift */; };
 		B48945F72A5C15AF0010435C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F62A5C15AF0010435C /* SceneDelegate.swift */; };
 		B48945F92A5C15AF0010435C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F82A5C15AF0010435C /* HomeViewController.swift */; };
@@ -53,6 +55,8 @@
 		B47471802A6122D20071B1D0 /* FeaturedPlaylistsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B47471822A6122DD0071B1D0 /* RecommendedTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		B47471842A6128B20071B1D0 /* NewReleasesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesCellViewModel.swift; sourceTree = "<group>"; };
+		B47471882A61C7E90071B1D0 /* FeaturedPlaylistsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsCellViewModel.swift; sourceTree = "<group>"; };
+		B474718A2A61C8100071B1D0 /* RecommendedTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCellViewModel.swift; sourceTree = "<group>"; };
 		B48945F12A5C15AF0010435C /* spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48945F42A5C15AF0010435C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48945F62A5C15AF0010435C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				B47471842A6128B20071B1D0 /* NewReleasesCellViewModel.swift */,
+				B47471882A61C7E90071B1D0 /* FeaturedPlaylistsCellViewModel.swift */,
+				B474718A2A61C8100071B1D0 /* RecommendedTrackCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -384,10 +390,12 @@
 				B489465E2A5F0D1C0010435C /* FeaturedPlaylistResponse.swift in Sources */,
 				B48946262A5C1AC70010435C /* APICaller.swift in Sources */,
 				B489461E2A5C1A260010435C /* ProfileViewController.swift in Sources */,
+				B47471892A61C7E90071B1D0 /* FeaturedPlaylistsCellViewModel.swift in Sources */,
 				B48946672A5F4DC70010435C /* User.swift in Sources */,
 				B48945F92A5C15AF0010435C /* HomeViewController.swift in Sources */,
 				B474717F2A6122BF0071B1D0 /* NewReleasesCollectionViewCell.swift in Sources */,
 				B48946362A5D6C6D0010435C /* AuthResponse.swift in Sources */,
+				B474718B2A61C8100071B1D0 /* RecommendedTrackCellViewModel.swift in Sources */,
 				B489465A2A5F08250010435C /* NewReleasesResponse.swift in Sources */,
 				B489465C2A5F09900010435C /* ImageObject.swift in Sources */,
 				B48946102A5C192F0010435C /* TabBarController.swift in Sources */,

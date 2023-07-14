@@ -82,6 +82,7 @@ class NewReleasesCollectionViewCell: UICollectionViewCell {
         numberOfTracksLabel.text = nil
         albumCoverImageView.image = nil
     }
+    
     func configure(with viewModel: NewReleasesCellViewModel) {
         albumNameLabel.text = viewModel.name
         artistNameLabel.text = viewModel.artistName
