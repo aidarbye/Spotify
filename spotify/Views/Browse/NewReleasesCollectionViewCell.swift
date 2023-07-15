@@ -28,7 +28,7 @@ class NewReleasesCollectionViewCell: UICollectionViewCell {
     private let artistNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 18, weight: .light)
+        label.font = .systemFont(ofSize: 20, weight: .light)
         return label
     }()
     
@@ -48,8 +48,8 @@ class NewReleasesCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let imageSize: CGFloat = contentView.height - 10
-        let albumLabelSize = albumNameLabel.sizeThatFits(CGSize(width: width-imageSize-10,
-                                                                height: height-10))
+        let albumLabelSize = albumNameLabel.sizeThatFits(CGSize(width: contentView.width-imageSize-10,
+                                                                height: contentView.height-10))
         
         artistNameLabel.sizeToFit()
         numberOfTracksLabel.sizeToFit()
@@ -70,7 +70,7 @@ class NewReleasesCollectionViewCell: UICollectionViewCell {
         
         numberOfTracksLabel.frame = CGRect(
                                       x: albumCoverImageView.right+10,
-                                      y: bottom - 44,
+                                      y: contentView.bottom - 44,
                                       width: numberOfTracksLabel.width,
                                       height: 44)
         

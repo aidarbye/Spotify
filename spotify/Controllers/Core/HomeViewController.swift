@@ -26,6 +26,10 @@ class HomeViewController: UIViewController {
     
     private var sections = [BrowseSectionType]()
     
+    private var newAlbums: [Album] = []
+    private var playlists: [Playlist] = []
+    private var tracks: [Track] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Browse"
@@ -134,6 +138,9 @@ class HomeViewController: UIViewController {
     }
     
     private func configureModels(newAlbum: [Album], tracks: [Track],FeaturedPlaylists:[Playlist]) {
+        self.newAlbums = newAlbum
+        self.playlists = FeaturedPlaylists
+        self.tracks = tracks
         sections.append(.newRealeses(viewModels: newAlbum.compactMap(
             {
                 return NewReleasesCellViewModel(
@@ -158,7 +165,7 @@ class HomeViewController: UIViewController {
                 return RecommendedTrackCellViewModel(
                     name: $0.name,
                     artistName: $0.artists.first?.name ?? "-",
-                    artworkURL: URL(string:$0.album.images.first?.url ?? ""))
+                    artworkURL: URL(string:$0.album?.images.first?.url ?? ""))
             }
         )))
         
@@ -175,6 +182,25 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let section = sections[indexPath.section]
+        switch section {
+        case .newRealeses:
+            let album = newAlbums[indexPath.row]
+            let vc = AlbumViewController(album: album)
+            vc.title = album.name
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+        case .featuredPlaylists:
+            let playlist = playlists[indexPath.row]
+            let vc = PlaylistViewController(playlist: playlist)
+            vc.title = playlist.name
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+        case .recommendedTracks: break
+        }
+    }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sections.count
     }

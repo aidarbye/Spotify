@@ -30,8 +30,8 @@
             filePath = "spotify/Managers/APICaller.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "getCurrentUserProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "spotify/Managers/APICaller.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "getCurrentUserProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "spotify/Managers/APICaller.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "getCurrentUserProfile(completion:)"
             landmarkType = "7">
          </BreakpointContent>
