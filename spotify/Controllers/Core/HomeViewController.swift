@@ -4,6 +4,14 @@ enum BrowseSectionType {
     case newRealeses(viewModels: [NewReleasesCellViewModel])
     case featuredPlaylists(viewModels: [FeaturedPlaylistsCellViewModel])
     case recommendedTracks(viewModels: [RecommendedTrackCellViewModel])
+    
+    var title: String {
+        switch self {
+        case .featuredPlaylists: return "Featured Playlists"
+        case .newRealeses: return "New Releases Albums"
+        case .recommendedTracks: return "Recommended"
+        }
+    }
 }
 
 class HomeViewController: UIViewController {
@@ -58,6 +66,7 @@ class HomeViewController: UIViewController {
         collectionView.register(NewReleasesCollectionViewCell.self, forCellWithReuseIdentifier: NewReleasesCollectionViewCell.reuseID)
         collectionView.register(FeaturedPlaylistsCollectionViewCell.self, forCellWithReuseIdentifier: FeaturedPlaylistsCollectionViewCell.reuseID)
         collectionView.register(RecommendedTrackCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.reuseID)
+        collectionView.register(HomeHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeaderCollectionReusableView.reuseID)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -215,7 +224,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return viewModel.count
         }
     }
-    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeHeaderCollectionReusableView.reuseID, for: indexPath) as? HomeHeaderCollectionReusableView, kind == UICollectionView.elementKindSectionHeader else {
+            return UICollectionReusableView()
+        }
+        let section = indexPath.section
+        let model = sections[section]
+        header.configure(with: model.title)
+        return header
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let type = sections[indexPath.section]
@@ -253,6 +270,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     private static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+        let supplementaryItems = [
+            NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .absolute(50)),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top)
+        ]
         switch section {
         case 0: // newRealeses
             // Item
@@ -278,6 +303,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             // Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .groupPaging
+            section.boundarySupplementaryItems = supplementaryItems
             return section
         case 1: // FeaturedPlaylists
             let item = NSCollectionLayoutItem(
@@ -302,6 +328,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             // Section
             let section = NSCollectionLayoutSection(group: horizontalGroup)
             section.orthogonalScrollingBehavior = .continuous
+            section.boundarySupplementaryItems = supplementaryItems
             return section
         case 2: // Recommended
             // Item
@@ -322,6 +349,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             )
             // Section
             let section = NSCollectionLayoutSection(group: group)
+            section.boundarySupplementaryItems = supplementaryItems
             return section
         default:
             // Item
