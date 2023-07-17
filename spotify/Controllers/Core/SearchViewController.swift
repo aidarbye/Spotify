@@ -1,9 +1,94 @@
 import UIKit
 
-class SearchViewController: UIViewController {
-
+class SearchViewController: UIViewController, UISearchResultsUpdating {
+    
+    private let searchController: UISearchController = {
+        let vc = UISearchController(searchResultsController: SearchResultsViewController())
+        vc.searchBar.placeholder = "Search"
+        vc.searchBar.searchBarStyle = .minimal
+        vc.definesPresentationContext = true
+        
+        return vc
+    }()
+    
+    private let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
+        let item = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(0.5),
+                heightDimension: .fractionalHeight(1)
+            )
+        )
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 7, bottom: 2, trailing: 7)
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(150)),
+            subitems: [item,item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    })
+    
+    //MARK: Lyficycle
+    
+    private var categories = [Category]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.reuseID)
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        APICaller.shared.getCategories { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let categories):
+                    self?.categories = categories
+                    self?.collectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.frame = view.bounds
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let resultsController = searchController.searchResultsController as? SearchResultsViewController,
+              let query = searchController.searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return
+        }
+        
+        //resultscontrollerupdate(with: query)
+        //perform search
+        
+    }
+}
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        categories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.reuseID, for: indexPath) as? CategoryCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let category = categories[indexPath.row]
+        let vm = CategoryCollectionViewCellViewModel(title: category.name,
+                                                     artworkURL: URL(string: category.icons.first?.url ?? ""))
+        cell.configure(with: vm)
+        return cell
     }
 }
