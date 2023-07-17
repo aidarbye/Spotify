@@ -26,6 +26,8 @@
 		B47471A12A653B370071B1D0 /* AllCategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471A02A653B370071B1D0 /* AllCategoriesResponse.swift */; };
 		B47471A32A6541020071B1D0 /* CategoryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471A22A6541020071B1D0 /* CategoryCollectionViewCellViewModel.swift */; };
 		B47471A52A6542560071B1D0 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471A42A6542560071B1D0 /* CategoryViewController.swift */; };
+		B47471A72A65A49E0071B1D0 /* SearchResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471A62A65A49E0071B1D0 /* SearchResultResponse.swift */; };
+		B47471A92A65BE530071B1D0 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471A82A65BE530071B1D0 /* SearchResult.swift */; };
 		B48945F52A5C15AF0010435C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F42A5C15AF0010435C /* AppDelegate.swift */; };
 		B48945F72A5C15AF0010435C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F62A5C15AF0010435C /* SceneDelegate.swift */; };
 		B48945F92A5C15AF0010435C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F82A5C15AF0010435C /* HomeViewController.swift */; };
@@ -81,6 +83,8 @@
 		B47471A02A653B370071B1D0 /* AllCategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesResponse.swift; sourceTree = "<group>"; };
 		B47471A22A6541020071B1D0 /* CategoryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		B47471A42A6542560071B1D0 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		B47471A62A65A49E0071B1D0 /* SearchResultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultResponse.swift; sourceTree = "<group>"; };
+		B47471A82A65BE530071B1D0 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		B48945F12A5C15AF0010435C /* spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48945F42A5C15AF0010435C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48945F62A5C15AF0010435C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				B48946632A5F4D640010435C /* Track.swift */,
 				B48946662A5F4DC70010435C /* User.swift */,
 				B48946682A5F4DFB0010435C /* Album.swift */,
+				B47471A82A65BE530071B1D0 /* SearchResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 		B48946652A5F4DB10010435C /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				B47471A62A65A49E0071B1D0 /* SearchResultResponse.swift */,
 				B48946352A5D6C6D0010435C /* AuthResponse.swift */,
 				B48946592A5F08250010435C /* NewReleasesResponse.swift */,
 				B489465D2A5F0D1C0010435C /* FeaturedPlaylistResponse.swift */,
@@ -429,6 +435,7 @@
 				B474719F2A6531760071B1D0 /* CategoryCollectionViewCell.swift in Sources */,
 				B489461A2A5C19F80010435C /* WelcomeViewController.swift in Sources */,
 				B48946282A5C1AD80010435C /* HapticsManager.swift in Sources */,
+				B47471A92A65BE530071B1D0 /* SearchResult.swift in Sources */,
 				B489465E2A5F0D1C0010435C /* FeaturedPlaylistResponse.swift in Sources */,
 				B48946262A5C1AC70010435C /* APICaller.swift in Sources */,
 				B489461E2A5C1A260010435C /* ProfileViewController.swift in Sources */,
@@ -444,6 +451,7 @@
 				B48946102A5C192F0010435C /* TabBarController.swift in Sources */,
 				B48946182A5C19E70010435C /* AuthViewController.swift in Sources */,
 				B489462A2A5C1AE00010435C /* AuthManager.swift in Sources */,
+				B47471A72A65A49E0071B1D0 /* SearchResultResponse.swift in Sources */,
 				B489462E2A5C1B350010435C /* Playlist.swift in Sources */,
 				B47471972A634A270071B1D0 /* PlaylistHeaderViewViewModel.swift in Sources */,
 				B48946322A5C1B490010435C /* UserProfile.swift in Sources */,

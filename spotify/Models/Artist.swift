@@ -6,3 +6,11 @@ struct Artist: Codable {
     let type: String
     let external_urls: [String: String]
 }
+struct ArtistObject: Codable {
+    let id: String
+    let genres: [String]
+    let name: String
+    let images: [ImageObject]
+    let type: String
+    let external_urls: [String: String]
+}
