@@ -207,7 +207,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             vc.title = playlist.name
             vc.navigationItem.largeTitleDisplayMode = .never
             navigationController?.pushViewController(vc, animated: true)
-        case .recommendedTracks: break
+        case .recommendedTracks:
+            let track = tracks[indexPath.row]
+            PlaybackPresenter.startPlayback(from: self, track: track)
         }
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -32,6 +32,8 @@
 		B47471AD2A6689B70071B1D0 /* SearchResultsDefaultTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471AC2A6689B70071B1D0 /* SearchResultsDefaultTableViewCellViewModel.swift */; };
 		B47471AF2A668C610071B1D0 /* SearchResultSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471AE2A668C610071B1D0 /* SearchResultSubtitleTableViewCell.swift */; };
 		B47471B12A668DBE0071B1D0 /* SearchResultSubtitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471B02A668DBE0071B1D0 /* SearchResultSubtitleTableViewCellViewModel.swift */; };
+		B47471B42A66ED880071B1D0 /* PlaybackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471B32A66ED880071B1D0 /* PlaybackPresenter.swift */; };
+		B47471B62A6702080071B1D0 /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471B52A6702080071B1D0 /* PlayerControlView.swift */; };
 		B48945F52A5C15AF0010435C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F42A5C15AF0010435C /* AppDelegate.swift */; };
 		B48945F72A5C15AF0010435C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F62A5C15AF0010435C /* SceneDelegate.swift */; };
 		B48945F92A5C15AF0010435C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F82A5C15AF0010435C /* HomeViewController.swift */; };
@@ -93,6 +95,8 @@
 		B47471AC2A6689B70071B1D0 /* SearchResultsDefaultTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDefaultTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		B47471AE2A668C610071B1D0 /* SearchResultSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		B47471B02A668DBE0071B1D0 /* SearchResultSubtitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		B47471B32A66ED880071B1D0 /* PlaybackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackPresenter.swift; sourceTree = "<group>"; };
+		B47471B52A6702080071B1D0 /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
 		B48945F12A5C15AF0010435C /* spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48945F42A5C15AF0010435C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48945F62A5C15AF0010435C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +173,14 @@
 			path = Browse;
 			sourceTree = "<group>";
 		};
+		B47471B22A66ED730071B1D0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B47471B32A66ED880071B1D0 /* PlaybackPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		B48945E82A5C15AF0010435C = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +202,7 @@
 		B48945F32A5C15AF0010435C /* spotify */ = {
 			isa = PBXGroup;
 			children = (
+				B47471B22A66ED730071B1D0 /* Presenter */,
 				B489460E2A5C17730010435C /* Resources */,
 				B489460B2A5C17560010435C /* ViewModels */,
 				B489460A2A5C17480010435C /* Models */,
@@ -212,6 +225,7 @@
 				B474719E2A6531760071B1D0 /* CategoryCollectionViewCell.swift */,
 				B47471AA2A6687A20071B1D0 /* SearchResultsDefaultTableViewCell.swift */,
 				B47471AE2A668C610071B1D0 /* SearchResultSubtitleTableViewCell.swift */,
+				B47471B52A6702080071B1D0 /* PlayerControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -443,8 +457,10 @@
 				B47471A32A6541020071B1D0 /* CategoryCollectionViewCellViewModel.swift in Sources */,
 				B48946122A5C19790010435C /* SearchViewController.swift in Sources */,
 				B474718D2A6319980071B1D0 /* AlbumViewController.swift in Sources */,
+				B47471B42A66ED880071B1D0 /* PlaybackPresenter.swift in Sources */,
 				B48946242A5C1A840010435C /* SearchResultsViewController.swift in Sources */,
 				B474719F2A6531760071B1D0 /* CategoryCollectionViewCell.swift in Sources */,
+				B47471B62A6702080071B1D0 /* PlayerControlView.swift in Sources */,
 				B489461A2A5C19F80010435C /* WelcomeViewController.swift in Sources */,
 				B48946282A5C1AD80010435C /* HapticsManager.swift in Sources */,
 				B47471A92A65BE530071B1D0 /* SearchResult.swift in Sources */,
