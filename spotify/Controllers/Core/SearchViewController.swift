@@ -94,7 +94,7 @@ extension SearchViewController: SearchResultsViewControllerDelegate {
             let vc = SFSafariViewController(url: url)
             present(vc, animated: true)
         case .track(let model):
-            PlaybackPresenter.startPlayback(from: self, track: model)
+            PlaybackPresenter.shared.startPlayback(from: self, track: model)
         case .album(let model):
             let vc = AlbumViewController(album: model)
             vc.navigationItem.largeTitleDisplayMode = .never

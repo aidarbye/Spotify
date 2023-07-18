@@ -1,6 +1,16 @@
 import UIKit
 
+protocol PlayerViewControllerDelegate: AnyObject {
+    func didTapPlayPause()
+    func didTapForward()
+    func didTapBack()
+    func didSlideSlider(_ value: Float)
+}
+
 class PlayerViewController: UIViewController {
+    
+    weak var dataSource: PlayerDataSourse?
+    weak var delegate: PlayerViewControllerDelegate?
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -16,7 +26,17 @@ class PlayerViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(imageView)
         view.addSubview(controlsView)
+        controlsView.delegate = self
         configureBarButtons()
+        configure()
+    }
+    
+    private func configure() {
+        imageView.sd_setImage(with: dataSource?.imageURL)
+        controlsView.configure(with: PlayerControlViewViewModel(
+            title: dataSource?.songName,
+            subtitle: dataSource?.subtitle)
+        )
     }
     
     private func configureBarButtons() {
@@ -41,15 +61,19 @@ class PlayerViewController: UIViewController {
     }
 }
 extension PlayerViewController: PlayerControlViewDelegate {
+    func playerControlView(_ playerControlsView: PlayerControlView, didSlideSlider value: Float) {
+        delegate?.didSlideSlider(value)
+    }
+    
     func playerControlViewDidTapPlayPause(_ playerControlsView: PlayerControlView) {
-        
+        delegate?.didTapPlayPause()
     }
     
     func playerControlViewDidTapForward(_ playerControlsView: PlayerControlView) {
-                
+        delegate?.didTapForward()
     }
     
     func playerControlViewDidTapBackward(_ playerControlsView: PlayerControlView) {
-        
+        delegate?.didTapBack()
     }
 }
