@@ -1,7 +1,7 @@
 import Foundation
 
 struct Track: Codable {
-    let album: Album?
+    var album: Album?
     let artists: [Artist]
     let disc_number: Int
     let duration_ms: Int

@@ -17,10 +17,14 @@ protocol PlayerDataSourse: AnyObject {
 
 final class PlaybackPresenter {
     
+    var playerVC: PlayerViewController?
+    
     static let shared = PlaybackPresenter()
     
     private var track: Track?
     private var tracks = [Track]()
+    
+    var index = 0
     
     var player: AVPlayer?
     var playerQueue: AVQueuePlayer?
@@ -30,13 +34,6 @@ final class PlaybackPresenter {
             return track
         }
         else if let player = self.playerQueue, !tracks.isEmpty {
-            let item = player.currentItem
-            let items = player.items()
-            guard let index = items.firstIndex(where: { i in
-                i == item
-            }) else {
-                return nil
-            }
             return tracks[index]
         }
         return nil
@@ -62,6 +59,7 @@ final class PlaybackPresenter {
         viewController.present(UINavigationController(rootViewController: vc), animated: true) { [weak self] in
             self?.player?.play()
         }
+        self.playerVC = vc
     }
     func startPlayback(
         from viewController: UIViewController,
@@ -86,21 +84,10 @@ final class PlaybackPresenter {
         viewController.present(UINavigationController(rootViewController: vc), animated: true) { [weak self] in
             self?.player?.play()
         }
+        self.playerVC = vc
     }
 }
-extension PlaybackPresenter: PlayerDataSourse {
-    var songName: String? {
-        currentTrack?.name
-    }
-    
-    var subtitle: String? {
-        currentTrack?.artists.first?.name
-    }
-    
-    var imageURL: URL? {
-        URL(string: currentTrack?.album?.images.first?.url ?? "")
-    }
-}
+
 extension PlaybackPresenter: PlayerViewControllerDelegate {
     
     func didSlideSlider(_ value: Float) {
@@ -129,6 +116,8 @@ extension PlaybackPresenter: PlayerViewControllerDelegate {
             player?.pause()
         } else if let player = playerQueue {
             player.advanceToNextItem()
+            index += 1
+            playerVC?.refreshUI()
         }
     }
     
@@ -138,12 +127,25 @@ extension PlaybackPresenter: PlayerViewControllerDelegate {
             player?.pause()
             player?.play()
         } else if let firstItem = playerQueue?.items().first {
-            // zaglushechka
+            // PASS
 //            playerQueue?.pause()
 //            playerQueue?.removeAllItems()
 //            playerQueue = AVQueuePlayer(items: [firstItem])
 //            playerQueue?.play()
 //            playerQueue?.volume = 0.5
         }
+    }
+}
+extension PlaybackPresenter: PlayerDataSourse {
+    var songName: String? {
+        currentTrack?.name
+    }
+    
+    var subtitle: String? {
+        currentTrack?.artists.first?.name
+    }
+    
+    var imageURL: URL? {
+        URL(string: currentTrack?.album?.images.first?.url ?? "")
     }
 }

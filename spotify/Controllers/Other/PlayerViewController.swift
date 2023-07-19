@@ -59,6 +59,11 @@ class PlayerViewController: UIViewController {
             x: 10,
             y: imageView.bottom + 10, width: view.width-20, height: view.height-imageView.height-view.safeAreaInsets.top-view.safeAreaInsets.bottom - 15)
     }
+    
+    func refreshUI() {
+        configure()
+    }
+    
 }
 extension PlayerViewController: PlayerControlViewDelegate {
     func playerControlView(_ playerControlsView: PlayerControlView, didSlideSlider value: Float) {
