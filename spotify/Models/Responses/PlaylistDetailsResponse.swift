@@ -17,3 +17,7 @@ struct PlaylistTrackResponse: Codable {
 struct PlaylistItem: Codable {
     let track: Track
 }
+
+struct LibraryPlaylistResponse: Codable {
+    let items: [Playlist]
+}

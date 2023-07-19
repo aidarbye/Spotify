@@ -56,6 +56,37 @@ final class APICaller {
             task.resume()
         }
     }
+    
+    public func getCurrentUserPlaylist(completion: @escaping (Result<[Playlist],Error>)->Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL+"/me/playlists"),
+                      type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                do {
+                    let result = try JSONDecoder().decode(LibraryPlaylistResponse.self, from: data)
+                    completion(.success(result.items))
+                } catch {
+                    completion(.failure(APIError.failedToGetData))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    public func createPlaylist(with name: String,completion: @escaping (Bool)->Void) {
+        
+    }
+    
+    public func addTrackToPlaylist(track: Track,playlist: Playlist, completion: @escaping (Bool)->Void) {
+        
+    }
+    
+    public func removeTrackFromPlaylist(track: Track,playlist: Playlist, completion: @escaping (Bool)->Void) {
+        
+    }
     //MARK: Profile
     public func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
         createRequest(with: URL(string: Constants.baseAPIURL + "/me"), type: .GET) { baseRequest in
