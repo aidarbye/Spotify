@@ -115,6 +115,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
         return sections[section].title
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        HapticsManager.shared.vibrateForSelection()
         tableView.deselectRow(at: indexPath, animated: true)
         let result = sections[indexPath.section].results[indexPath.row]
         delegate?.delegateDidTapResult(result)

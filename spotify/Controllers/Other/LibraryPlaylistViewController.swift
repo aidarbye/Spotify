@@ -9,6 +9,8 @@ import UIKit
 
 class LibraryPlaylistViewController: UIViewController, ActionLabelViewDelegate {
 
+    public var selectionHandler: ((Playlist)->Void)?
+    
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(SearchResultSubtitleTableViewCell.self, forCellReuseIdentifier: SearchResultSubtitleTableViewCell.reuseID)
@@ -28,8 +30,14 @@ class LibraryPlaylistViewController: UIViewController, ActionLabelViewDelegate {
         view.addSubview(tableView)
         setupnoplaylistsview()
         fetchData()
+        if selectionHandler != nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
+        }
     }
     
+    @objc private  func didTapClose() {
+        dismiss(animated: true)
+    }
     
     private func fetchData() {
         APICaller.shared.getCurrentUserPlaylist { [weak self] result in
@@ -87,7 +95,9 @@ class LibraryPlaylistViewController: UIViewController, ActionLabelViewDelegate {
                 if success {
                     // refresh
                     self?.fetchData()
+                    HapticsManager.shared.vibrate(for: .success)
                 } else {
+                    HapticsManager.shared.vibrate(for: .error)
                     print("failed to create playlist")
                 }
             }
@@ -120,4 +130,22 @@ extension LibraryPlaylistViewController: UITableViewDelegate, UITableViewDataSou
         return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        HapticsManager.shared.vibrateForSelection()
+        tableView.deselectRow(at: indexPath, animated: true)
+        let playlist = playlists[indexPath.row]
+        
+        guard selectionHandler == nil else {
+            selectionHandler?(playlist)
+            dismiss(animated: true)
+            return
+        }
+    
+        let vc = PlaylistViewController(playlist: playlist)
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.isOwner = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

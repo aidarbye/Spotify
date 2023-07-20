@@ -40,6 +40,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addLongTapGesture()
         title = "Browse"
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem =
@@ -57,6 +58,44 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
+    }
+    
+    private func addLongTapGesture() {
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(didlongpress(_:)))
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc private func didlongpress(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else {
+            return
+        }
+        let touchpoint = gesture.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: touchpoint),
+              indexPath.section == 2
+        else {
+            return
+        }
+        
+        let model = tracks[indexPath.row]
+        
+        let actionsheet = UIAlertController(title: model.name,
+                                            message: "do u wana add this",
+                                            preferredStyle: .actionSheet)
+        actionsheet.addAction(UIAlertAction(title: "cancel", style: .cancel))
+        actionsheet.addAction(UIAlertAction(title: "add", style: .default,handler: { [weak self] _ in
+            DispatchQueue.main.async {
+                let vc = LibraryPlaylistViewController()
+                vc.selectionHandler = { playlist in
+                    APICaller.shared.addTrackToPlaylist(track: model, playlist: playlist) { success in
+                        print("added success: \(success)")
+                    }
+                }
+                vc.title = "select playlist"
+                self?.present(UINavigationController(rootViewController: vc), animated: true)
+            }
+        }))
+        present(actionsheet, animated: true)
+        
     }
     
     private func configureCollectionView() {
@@ -193,6 +232,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
         let section = sections[indexPath.section]
         switch section {
         case .newRealeses:

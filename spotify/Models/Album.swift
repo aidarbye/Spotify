@@ -1,5 +1,9 @@
 import Foundation
 
+struct album: Codable {
+    let album: Album
+}
+
 struct Album: Codable {
     let album_type: String
     let total_tracks: Int

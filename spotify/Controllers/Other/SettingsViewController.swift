@@ -47,7 +47,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func signOutTapped() {
-        
+        AuthManager.shared.sighOut { [weak self] success in
+            if success {
+                DispatchQueue.main.async {
+                    let welcomeVC = UINavigationController(rootViewController: WelcomeViewController())
+                    welcomeVC.navigationBar.prefersLargeTitles = true
+                    welcomeVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
+                    welcomeVC.modalPresentationStyle = .fullScreen
+                    self?.present(welcomeVC, animated: true) { 
+                        self?.navigationController?.popToRootViewController(animated: false)
+                    }
+                }
+            }
+        }
     }
     
     //MARK: TableView
@@ -66,6 +78,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        HapticsManager.shared.vibrateForSelection()
         tableView.deselectRow(at: indexPath, animated: true)
         // Call handler for cell
         let model = sections[indexPath.section].options[indexPath.row]

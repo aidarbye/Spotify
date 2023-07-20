@@ -67,6 +67,23 @@ class AlbumViewController: UIViewController {
                 }
             }
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didtapadctions))
+    }
+    @objc private func didtapadctions() {
+        let actionsheet = UIAlertController(title: album.name, message: "actions", preferredStyle: .actionSheet)
+        actionsheet.addAction(UIAlertAction(title: "cancel", style: .cancel))
+        actionsheet.addAction(UIAlertAction(title: "save", style: .default, handler: { [weak self] _ in
+            guard let album = self?.album else {return}
+            APICaller.shared.saveAlbum(album: album) { success in
+                if success {
+                    NotificationCenter.default.post(name: .albumSaveNotification, object: nil)
+                    print("saved")
+                } else {
+                    print("error")
+                }
+            }
+        }))
+        present(actionsheet, animated: true)
     }
 }
 extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -103,7 +120,7 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 extension AlbumViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func PlaylistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
-        let images = album.images
+        _ = album.images
         let trackswithalbum = tracks.compactMap {
             var track = $0
             track.album = self.album

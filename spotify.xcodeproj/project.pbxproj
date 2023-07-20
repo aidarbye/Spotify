@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2924F23AB82052303076E0B9 /* Pods_spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 698AA3D23F101991AC1722AE /* Pods_spotify.framework */; };
+		B469A40B2A69C17D00E57A60 /* SavedAlbumsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469A40A2A69C17D00E57A60 /* SavedAlbumsResponse.swift */; };
 		B474717F2A6122BF0071B1D0 /* NewReleasesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B474717E2A6122BF0071B1D0 /* NewReleasesCollectionViewCell.swift */; };
 		B47471812A6122D20071B1D0 /* FeaturedPlaylistsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471802A6122D20071B1D0 /* FeaturedPlaylistsCollectionViewCell.swift */; };
 		B47471832A6122DD0071B1D0 /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471822A6122DD0071B1D0 /* RecommendedTrackCollectionViewCell.swift */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		3DBA7830B3BD59315438E800 /* Pods-spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotify.debug.xcconfig"; path = "Target Support Files/Pods-spotify/Pods-spotify.debug.xcconfig"; sourceTree = "<group>"; };
 		698AA3D23F101991AC1722AE /* Pods_spotify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B469A40A2A69C17D00E57A60 /* SavedAlbumsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAlbumsResponse.swift; sourceTree = "<group>"; };
 		B474717E2A6122BF0071B1D0 /* NewReleasesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesCollectionViewCell.swift; sourceTree = "<group>"; };
 		B47471802A6122D20071B1D0 /* FeaturedPlaylistsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B47471822A6122DD0071B1D0 /* RecommendedTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				B47471902A6320A70071B1D0 /* AlbumDetailsResponse.swift */,
 				B47471922A6324F40071B1D0 /* PlaylistDetailsResponse.swift */,
 				B47471A02A653B370071B1D0 /* AllCategoriesResponse.swift */,
+				B469A40A2A69C17D00E57A60 /* SavedAlbumsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				B489461C2A5C1A1F0010435C /* SettingsViewController.swift in Sources */,
 				B48946602A5F136E0010435C /* RecommendedGenresResponse.swift in Sources */,
 				B48946692A5F4DFB0010435C /* Album.swift in Sources */,
+				B469A40B2A69C17D00E57A60 /* SavedAlbumsResponse.swift in Sources */,
 				B47471A12A653B370071B1D0 /* AllCategoriesResponse.swift in Sources */,
 				B474719D2A63C53A0071B1D0 /* AlbumTrackViewCellViewModel.swift in Sources */,
 			);

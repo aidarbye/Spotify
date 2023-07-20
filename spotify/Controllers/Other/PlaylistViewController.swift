@@ -4,6 +4,8 @@ class PlaylistViewController: UIViewController {
     
     private let playlist: Playlist
     
+    public var isOwner = false
+    
     private let collectionView = UICollectionView(
         frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { _, _ in
             let item = NSCollectionLayoutItem(
@@ -51,6 +53,7 @@ class PlaylistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addLongTapGesture()
         title = playlist.name
         view.backgroundColor = .systemBackground
         view.addSubview(collectionView)
@@ -82,6 +85,43 @@ class PlaylistViewController: UIViewController {
                                                             target: self,
                                                             action: #selector(didTapShared))
     }
+    
+    private func addLongTapGesture() {
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(didtaplong(_:)))
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc private func didtaplong(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else {
+            return
+        }
+        let touchpoint = gesture.location(in: collectionView)
+        guard let indexpath = collectionView.indexPathForItem(at: touchpoint) else {
+            return
+        }
+        let tracktodelete = tracks[indexpath.row]
+        let actionsheet = UIAlertController(title: "remove \(tracktodelete.name)", message: "d u wana remove", preferredStyle: .actionSheet)
+        actionsheet.addAction(UIAlertAction(title: "cancel", style: .cancel))
+        actionsheet.addAction(UIAlertAction(title: "delete", style: .default,handler: { [weak self] _ in
+            guard let playlist = self?.playlist else {return}
+            APICaller.shared.removeTrackFromPlaylist(track: tracktodelete, playlist: playlist) { success in
+                DispatchQueue.main.async {
+                    if success {
+                        self?.tracks.remove(at: indexpath.row)
+                        self?.viewModels.remove(at: indexpath.row)
+                        self?.collectionView.reloadData()
+                        print("deleted")
+                    } else {
+                        print("not delelted")
+                    }
+                }
+            }
+        }))
+        present(actionsheet, animated: true)
+        
+        
+    }
+    
     @objc private func didTapShared() {
         guard let url = URL(string: playlist.external_urls["spotify"] ?? "") else {
             return
@@ -103,6 +143,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         viewModels.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        HapticsManager.shared.vibrateForSelection()
         collectionView.deselectItem(at: indexPath, animated: true)
         let track = tracks[indexPath.row]
         PlaybackPresenter.shared.startPlayback(from: self, track: track)
@@ -118,6 +159,7 @@ extension PlaylistViewController: UICollectionViewDelegate, UICollectionViewData
         cell.configure(with: viewModels[indexPath.row])
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard
         let header = collectionView.dequeueReusableSupplementaryView(
