@@ -164,7 +164,7 @@ class HomeViewController: UIViewController {
             {
                 return FeaturedPlaylistsCellViewModel(
                     name: $0.name,
-                    artworkURL: URL(string:$0.images.first?.url ?? ""),
+                    artworkURL: URL(string:$0.images?.first?.url ?? ""),
                     creatorName: $0.owner.display_name)
             }
         )))

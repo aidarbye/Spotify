@@ -107,7 +107,7 @@ class SearchResultsViewController: UIViewController, UITableViewDelegate, UITabl
             cell.configure(with: SearchResultSubtitleTableViewCellViewModel(
                 title: model.name,
                 subtitle: model.owner.display_name,
-                imageurl: URL(string: model.images.first?.url ?? "")))
+                imageurl: URL(string: model.images?.first?.url ?? "")))
             return cell
         }
     }

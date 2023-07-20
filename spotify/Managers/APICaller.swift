@@ -77,7 +77,41 @@ final class APICaller {
     }
     
     public func createPlaylist(with name: String,completion: @escaping (Bool)->Void) {
-        
+        getCurrentUserProfile { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.createRequest(
+                    with: URL(string: Constants.baseAPIURL+"/users/\(user.id)/playlists"),
+                    type: .POST)
+                { baseRequest in
+                    var request = baseRequest
+                    let json = [
+                        "name": name
+                    ]
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: json,options: .fragmentsAllowed)
+                    let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                        guard let data = data, error == nil else {
+                            completion(false)
+                            return
+                        }
+                        do {
+                            let result = try JSONDecoder().decode(Playlist.self, from: data)
+                            if result.id != nil {
+                                completion(true)
+                            } else {
+                                completion(false)
+                            }
+                        } catch {
+                            completion(false)
+                        }
+                    }
+                    task.resume()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
     }
     
     public func addTrackToPlaylist(track: Track,playlist: Playlist, completion: @escaping (Bool)->Void) {

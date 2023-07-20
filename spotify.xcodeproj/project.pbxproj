@@ -37,6 +37,7 @@
 		B47471B82A67B6EF0071B1D0 /* LibraryPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471B72A67B6EF0071B1D0 /* LibraryPlaylistViewController.swift */; };
 		B47471BA2A67B7240071B1D0 /* LibraryAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471B92A67B7240071B1D0 /* LibraryAlbumViewController.swift */; };
 		B47471BC2A67BC200071B1D0 /* LibraryToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471BB2A67BC200071B1D0 /* LibraryToggleView.swift */; };
+		B47471D82A6926AE0071B1D0 /* ActionLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47471D72A6926AD0071B1D0 /* ActionLabelView.swift */; };
 		B48945F52A5C15AF0010435C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F42A5C15AF0010435C /* AppDelegate.swift */; };
 		B48945F72A5C15AF0010435C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F62A5C15AF0010435C /* SceneDelegate.swift */; };
 		B48945F92A5C15AF0010435C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48945F82A5C15AF0010435C /* HomeViewController.swift */; };
@@ -103,6 +104,7 @@
 		B47471B72A67B6EF0071B1D0 /* LibraryPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistViewController.swift; sourceTree = "<group>"; };
 		B47471B92A67B7240071B1D0 /* LibraryAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAlbumViewController.swift; sourceTree = "<group>"; };
 		B47471BB2A67BC200071B1D0 /* LibraryToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryToggleView.swift; sourceTree = "<group>"; };
+		B47471D72A6926AD0071B1D0 /* ActionLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLabelView.swift; sourceTree = "<group>"; };
 		B48945F12A5C15AF0010435C /* spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48945F42A5C15AF0010435C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48945F62A5C15AF0010435C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				B47471AE2A668C610071B1D0 /* SearchResultSubtitleTableViewCell.swift */,
 				B47471B52A6702080071B1D0 /* PlayerControlView.swift */,
 				B47471BB2A67BC200071B1D0 /* LibraryToggleView.swift */,
+				B47471D72A6926AD0071B1D0 /* ActionLabelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B47471D82A6926AE0071B1D0 /* ActionLabelView.swift in Sources */,
 				B47471812A6122D20071B1D0 /* FeaturedPlaylistsCollectionViewCell.swift in Sources */,
 				B48946622A5F4BA60010435C /* RecommendationsTracksResponse.swift in Sources */,
 				B474719B2A63C41F0071B1D0 /* AlbumTrackCollectionViewCell.swift in Sources */,
